@@ -389,49 +389,31 @@
 </section>
 
 <section>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
+    <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
                     <!--<h5 class="modal-title" id="myModalLabel">GET UPTO 50% OFF ON ALL SERVICES </h5>-->
                     <h2 class="modal-title" id="myModalLabel">Avail 50% Discount On <span>Book Publishing
                         </span>Service</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
-                <div class="modal-body">
-                    <form class="form_submission" method="POST">
-                        <!-- Custom Fields -->
-                        <input type="hidden" name="url"
-                            value='privacy-policy.html'>
-                        <input type="hidden" name="domain" value="www.amazonebookpublishers.co">
-                        <input type="hidden" name="subject" value="popup Form (www.amazonebookpublishers.co)">
-                        <!--PPC parameters -->
-                        <input type="hidden" name="keyword"
-                            value="---">
-                        <input type="hidden" name="matchtype"
-                            value="---">
-                        <input type="hidden" name="msclkid"
-                            value="---">
-                        <input type="hidden" name="gclid"
-                            value="---">
-                        <!--End PPC paramters-->
-                        <!-- IP Location  -->
-                        <input type="hidden" class="ipaddress" name="ipaddress" value="124.29.197.243">
-                        <div class="mb-3">
-                            <input type="text" value="" name="name" class="form-control" id="name"
-                                placeholder="Enter Your Full Name" required="required">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" value="" name="email" class="form-control" id="email"
-                                placeholder="Enter Your Email Address" required="required">
-                        </div>
-                        <div class="mb-3">
-                            <input type="number" value="" name="phone" minlength="10" maxlength="12"
-                                class="form-control" id="number" placeholder="Enter Phone Number" required="required">
-                        </div>
-                        <div class="mb-3">
-                            <select name="services" id="services" required="required">
-                                <option value="select-your-service" disabled selected>Select your Service</option>
+      <div class="modal-body">
+        <form id="queryForm">
+          <input type="hidden" name="ipaddress" value="124.29.197.243" />
+
+          <div class="mb-3">
+            <input type="text" name="name" class="form-control" placeholder="Full Name" required />
+          </div>
+          <div class="mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required />
+          </div>
+          <div class="mb-3">
+            <input type="number" name="phone" class="form-control" placeholder="Phone Number" required />
+          </div>
+          <div class="mb-3">
+            <select name="services" class="form-select" required>
+              <option value="select-your-service" disabled selected>Select your Service</option>
                                 <option value="ghostwriting-services">Ghostwriting Services</option>
                                 <option value="book-editing-services">Book Editing Services</option>
                                 <option value="book-cover-design-services">Book Cover Design Services</option>
@@ -446,22 +428,22 @@
                                 <option value="audio-book-services">Audio Book Services</option>
                                 <option value="author-website-services">Author Website Services</option>
                                 <option value="book-illustration-services">Book Illustration Services</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <div class="error mt-3 alert alert-danger text-left mb-0" style="display: none">
-                        </div>
-                        <div class="success mt-3 alert alert-success text-left mb-0" style="display: none">
-                        </div>
-                        <div class="loader" style="display: none">
-                            <img alt="loader" src="loader.gif">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+            </select>
+          </div>
+
+          <div class="loader" style="display: none;">Submitting...</div>
+          <div class="success alert alert-success mt-2" style="display: none;"></div>
+          <div class="error alert alert-danger mt-2" style="display: none;"></div>
+
+          <button type="submit" class="btn btn-success w-100">Submit</button>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
 </section>
+
+
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
@@ -474,7 +456,66 @@
 <script src='js/TweenMax.min.js'></script>
 <script src="js/custom.js"></script>
 <script src="js/jquery.validate.min.js"></script>
-<script src="js/form-submit8ac9.js?208182083&amp;brand=814983"></script>
+<!-- <script src="js/form-submit8ac9.js?208182083&amp;brand=814983"></script> -->
+
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAJtdVT-mJOf1oZRj11zQcGTIWmjb5mrgc",
+    authDomain: "ebookquery-11e08.firebaseapp.com",
+    projectId: "ebookquery-11e08",
+    storageBucket: "ebookquery-11e08.firebasestorage.app",
+    messagingSenderId: "379014085237",
+    appId: "1:379014085237:web:6a11ff2ab426866e91163c"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  document.getElementById("queryForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const loader = form.querySelector(".loader");
+    const success = form.querySelector(".success");
+    const error = form.querySelector(".error");
+
+    loader.style.display = "block";
+    success.style.display = "none";
+    error.style.display = "none";
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const service = form.services.value;
+    const ip = form.ipaddress.value;
+
+    try {
+      await db.collection("contactQueries").add({
+        name,
+        email,
+        phone,
+        service,
+        ip,
+        submittedAt: new Date()
+      });
+
+      form.reset();
+      loader.style.display = "none";
+      success.textContent = "Your query has been submitted!";
+      success.style.display = "block";
+    } catch (err) {
+      console.error(err);
+      loader.style.display = "none";
+      error.textContent = "Failed to submit. Please try again.";
+      error.style.display = "block";
+    }
+  });
+</script>
+
+
+
 <script> 
 $('.chat, .chatt').click(function () { $zopim.livechat.window.toggle(); });
 </script>

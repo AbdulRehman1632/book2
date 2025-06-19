@@ -1695,23 +1695,87 @@
 </section>
 
 <section>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+                    <!--<h5 class="modal-title" id="myModalLabel">GET UPTO 50% OFF ON ALL SERVICES </h5>-->
+                    <h2 class="modal-title" id="myModalLabel">Avail 50% Discount On <span>Book Publishing
+                        </span>Service</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                </div>
+      <div class="modal-body">
+        <form id="queryForm">
+          <input type="hidden" name="ipaddress" value="124.29.197.243" />
+
+          <div class="mb-3">
+            <input type="text" name="name" class="form-control" placeholder="Full Name" required />
+          </div>
+          <div class="mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required />
+          </div>
+          <div class="mb-3">
+            <input type="number" name="phone" class="form-control" placeholder="Phone Number" required />
+          </div>
+          <div class="mb-3">
+            <select name="services" class="form-select" required>
+              <option value="select-your-service" disabled selected>Select your Service</option>
+                                <option value="ghostwriting-services">Ghostwriting Services</option>
+                                <option value="book-editing-services">Book Editing Services</option>
+                                <option value="book-cover-design-services">Book Cover Design Services</option>
+                                <option value="ebook-cover-design-services">Ebook Cover Design Services</option>
+                                <option value="book-publishing-services">Book Publishing Services</option>
+                                <option value="book-marketing-services">Book Marketing Services</option>
+                                <option value="ebook-writing-services">Ebook Writing Services</option>
+                                <option value="biography-writing-services">Biography Writing Services</option>
+                                <option value="memoir-writing-services">Memoir Writing Services</option>
+                                <option value="book-printing-services">Book Printing Services</option>
+                                <option value="video-book-services">Video Book Services</option>
+                                <option value="audio-book-services">Audio Book Services</option>
+                                <option value="author-website-services">Author Website Services</option>
+                                <option value="book-illustration-services">Book Illustration Services</option>
+            </select>
+          </div>
+
+          <div class="loader" style="display: none;">Submitting...</div>
+          <div class="success alert alert-success mt-2" style="display: none;"></div>
+          <div class="error alert alert-danger mt-2" style="display: none;"></div>
+
+          <button type="submit" class="btn btn-success w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 
+<section>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <!--<h5 class="modal-title" id="myModalLabel">GET UPTO 50% OFF ON ALL SERVICES </h5>-->
+                    
                     <h2 class="modal-title" id="myModalLabel">Avail 50% Discount On <span>Book Publishing
                         </span>Service</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
                 <div class="modal-body">
                     <form class="form_submission" method="POST">
-                        <!-- Custom Fields -->
+                       
                         <input type="hidden" name="url"
                             value='ebook-cover-design-services.html'>
                         <input type="hidden" name="domain" value="www.amazonebookpublishers.co">
                         <input type="hidden" name="subject" value="popup Form (www.amazonebookpublishers.co)">
-                        <!--PPC parameters -->
+                        
                         <input type="hidden" name="keyword"
                             value="---">
                         <input type="hidden" name="matchtype"
@@ -1720,8 +1784,7 @@
                             value="---">
                         <input type="hidden" name="gclid"
                             value="---">
-                        <!--End PPC paramters-->
-                        <!-- IP Location  -->
+                       
                         <input type="hidden" class="ipaddress" name="ipaddress" value="124.29.197.243">
                         <div class="mb-3">
                             <input type="text" value="" name="name" class="form-control" id="name"
@@ -1767,7 +1830,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
@@ -1780,7 +1843,65 @@
 <script src='js/TweenMax.min.js'></script>
 <script src="js/custom.js"></script>
 <script src="js/jquery.validate.min.js"></script>
-<script src="js/form-submit901c.js?837622719&amp;brand=814983"></script>
+<!-- <script src="js/form-submit901c.js?837622719&amp;brand=814983"></script> -->
+
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAJtdVT-mJOf1oZRj11zQcGTIWmjb5mrgc",
+    authDomain: "ebookquery-11e08.firebaseapp.com",
+    projectId: "ebookquery-11e08",
+    storageBucket: "ebookquery-11e08.firebasestorage.app",
+    messagingSenderId: "379014085237",
+    appId: "1:379014085237:web:6a11ff2ab426866e91163c"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  document.getElementById("queryForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const loader = form.querySelector(".loader");
+    const success = form.querySelector(".success");
+    const error = form.querySelector(".error");
+
+    loader.style.display = "block";
+    success.style.display = "none";
+    error.style.display = "none";
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim();
+    const service = form.services.value;
+    const ip = form.ipaddress.value;
+
+    try {
+      await db.collection("contactQueries").add({
+        name,
+        email,
+        phone,
+        service,
+        ip,
+        submittedAt: new Date()
+      });
+
+      form.reset();
+      loader.style.display = "none";
+      success.textContent = "Your query has been submitted!";
+      success.style.display = "block";
+    } catch (err) {
+      console.error(err);
+      loader.style.display = "none";
+      error.textContent = "Failed to submit. Please try again.";
+      error.style.display = "block";
+    }
+  });
+</script>
+
+
 <script> 
 $('.chat, .chatt').click(function () { $zopim.livechat.window.toggle(); });
 </script>
