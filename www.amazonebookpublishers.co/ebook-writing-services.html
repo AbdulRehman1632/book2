@@ -1702,7 +1702,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
                 </div>
       <div class="modal-body">
-        <form id="queryForm">
+        <form id="queryForm" class="form_submission">
           <input type="hidden" name="ipaddress" value="124.29.197.243" />
 
           <div class="mb-3">
@@ -1773,47 +1773,67 @@
     appId: "1:379014085237:web:6a11ff2ab426866e91163c"
   };
 
+  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  document.getElementById("queryForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+  // Handle ALL forms with class `.form_submission`
+  document.querySelectorAll(".form_submission").forEach((form) => {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const form = this;
-    const loader = form.querySelector(".loader");
-    const success = form.querySelector(".success");
-    const error = form.querySelector(".error");
+      const loader = form.querySelector(".loader");
+      const success = form.querySelector(".success");
+      const error = form.querySelector(".error");
 
-    loader.style.display = "block";
-    success.style.display = "none";
-    error.style.display = "none";
+      // Show loader
+      if (loader) loader.style.display = "block";
+      if (success) success.style.display = "none";
+      if (error) error.style.display = "none";
 
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const service = form.services.value;
-    const ip = form.ipaddress.value;
+      // Get form field values
+      const name = form.name?.value.trim() || "";
+      const email = form.email?.value.trim() || "";
+      const phone = form.phone?.value.trim() || "";
+      const service = form.services?.value || "";
+      const budget = form.Budget?.value || "";
+      const message = form.message?.value || form.msg?.value || "";
+      const ip = form.ipaddress?.value || "";
+      const url = form.url?.value || "";
+      const domain = form.domain?.value || "";
+      const subject = form.subject?.value || "";
 
-    try {
-      await db.collection("contactQueries").add({
-        name,
-        email,
-        phone,
-        service,
-        ip,
-        submittedAt: new Date()
-      });
+      // Firebase submit
+      try {
+        await db.collection("contactQueries").add({
+          name,
+          email,
+          phone,
+          service,
+          budget,
+          message,
+          ip,
+          url,
+          domain,
+          subject,
+          submittedAt: new Date()
+        });
 
-      form.reset();
-      loader.style.display = "none";
-      success.textContent = "Your query has been submitted!";
-      success.style.display = "block";
-    } catch (err) {
-      console.error(err);
-      loader.style.display = "none";
-      error.textContent = "Failed to submit. Please try again.";
-      error.style.display = "block";
-    }
+        form.reset();
+        if (loader) loader.style.display = "none";
+        if (success) {
+          success.textContent = "Your query has been submitted!";
+          success.style.display = "block";
+        }
+      } catch (err) {
+        console.error("Error saving to Firestore:", err);
+        if (loader) loader.style.display = "none";
+        if (error) {
+          error.textContent = "Failed to submit. Please try again.";
+          error.style.display = "block";
+        }
+      }
+    });
   });
 </script>
 
