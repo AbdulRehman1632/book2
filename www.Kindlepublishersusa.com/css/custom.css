@@ -1,7 +1,8 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap";
-
+/* background-image: url(../images/service-bg-img.png); */
 /* #e82567 */
 /* #270f17 */
+/* ad4b6c */
 .add {
     margin: 30px 0;
 }
@@ -791,7 +792,7 @@ section.banner.banner2 {
     z-index: -1;
     height: 100%;
     background-repeat: no-repeat;
-    background-image: url(../images/wwr-bg-img.png);
+    /* background-image: url(../images/wwr-bg-img.png); */
     background-position: center;
     background-size: contain;
 }
@@ -7170,7 +7171,7 @@ a.call-action:hover {
         font-size: 12px !important;
         font-family: "Poppins" !important;
         font-weight: 500;
-        color: #660033 !important;
+        color: #e82567 !important;
         word-spacing: 2px;
         padding-top: 24px;
     }
@@ -7309,7 +7310,7 @@ a.call-action:hover {
     .our-satisfied-counts.numbers h2 {
         font-size: 28px !important;
         font-weight: 600;
-        color: #660033;
+        color: #fff;
         font-family: "Poppins" !important;
     }
     .our-satisfied-customer-stats .our-satisfied-customer-content .our-satisfied-counts .counter-container span {
@@ -8587,7 +8588,7 @@ a.call-action:hover {
         font-size: 12px !important;
         font-family: "Poppins" !important;
         font-weight: 500;
-        color: #660033 !important;
+        color: #e82567 !important;
         word-spacing: 2px;
         padding-top: 24px;
     }
@@ -8726,7 +8727,7 @@ a.call-action:hover {
     .our-satisfied-counts.numbers h2 {
         font-size: 28px !important;
         font-weight: 600;
-        color: #660033;
+        color: #fff;
         font-family: "Poppins" !important;
     }
     .our-satisfied-customer-stats .our-satisfied-customer-content .our-satisfied-counts .counter-container span {
@@ -9653,7 +9654,7 @@ a.call-action:hover {
 
     .little-intro-services {
         background-repeat: no-repeat;
-        background-image: url(../images/service-bg-img.png);
+        /* background-image: url(../images/service-bg-img.png); */
         background-position: center;
         background-size: contain;
         background-position-y: 44% !important;
@@ -11335,7 +11336,7 @@ a.call-action:hover {
 .our-satisfied-counts.numbers h2 {
     font-size: 32px !important;
     font-weight: 600;
-    color: #660033;
+    color: #fff;
     font-family: "Poppins" !important;
 }
 .right-video {
@@ -11641,7 +11642,7 @@ a.call-action:hover {
     font-size: 15px;
     font-family: "Poppins" !important;
     font-weight: 500;
-    color: #660033 !important;
+    color: #e82567 !important;
     word-spacing: 2px;
     padding-top: 24px;
 }
@@ -12946,7 +12947,7 @@ section.our-portfolio {
 }
 section.amazon-testimonails {
     padding: 84px 0px;
-    background-image: url(../images/amazon-sec-bg.png);
+    /* background-image: url(../images/amazon-sec-bg.png); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13955,7 +13956,7 @@ section.footer {
     width: 100%;
 }
 section.copy-right {
-    background:#e82567;
+    background:#ad4b6c;
 }
 .copyright h1 {
     font-size: 16px;
@@ -14438,7 +14439,7 @@ section.service-banner4 {
 }
 .little-intro-services {
     background-repeat: no-repeat;
-    background-image: url(../images/service-bg-img.png);
+    /* background-image: url(../images/service-bg-img.png); */
     background-position: center;
     background-size: contain;
 }
