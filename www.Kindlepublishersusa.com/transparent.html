@@ -100,7 +100,7 @@
                         data-bs-target="#myModal">Get Started Today <i class="fa fa-angle-right"></i>
                     </button>
                     <div class="phone">
-                        <a href="tel:8552685168">
+                        <a href="tel:3126257264">
                             <div class="icon_phone">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                             </div>
@@ -109,8 +109,8 @@
                             <a href="javascript:;" class="chat">
                                 <h1>Live Chat</h1>
                             </a>
-                            <a href="tel:8552685168">
-                                <h4>Toll Free: (855) 268-5168</h4>
+                            <a href="tel:3126257264">
+                                <h4>Toll Free: (312) 625-7264</h4>
                             </a>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                         <img src="images/phone-icon-f.png" alt="">
                     </div>
                     <div class="icon-info">
-                        <h1><a href="tel:8552685168">Toll Free: (855) 268-5168</a></h1>
+                        <h1><a href="tel:3126257264">Toll Free: (312) 625-7264</a></h1>
                     </div>
                 </div>
                 <div class="icon-box">
@@ -245,7 +245,7 @@
                         <img src="images/address-icon-f.png" alt="">
                     </div>
                     <div class="icon-info">
-                        <h1>100 Church St 8th floor, New York, NY 10007</h1>
+                        <h1>2021 7th Avenue, Seattle, Washington 98121, United States</h1>
                     </div>
                 </div>
 
@@ -355,58 +355,88 @@
 
 <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+<!-- In HEAD -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
+  // 1. Firebase Config
   const firebaseConfig = {
     apiKey: "AIzaSyBGwd5YUe0E9eeN7zo7-1Un9zakCjKqZoE",
-  authDomain: "kindlepublisher-18a03.firebaseapp.com",
-  projectId: "kindlepublisher-18a03",
-  storageBucket: "kindlepublisher-18a03.firebasestorage.app",
-  messagingSenderId: "686053643622",
-  appId: "1:686053643622:web:0932581db22bfdd39064a7",
-  measurementId: "G-V3K8TBP2KL"
+    authDomain: "kindlepublisher-18a03.firebaseapp.com",
+    projectId: "kindlepublisher-18a03",
+    storageBucket: "kindlepublisher-18a03.firebasestorage.app",
+    messagingSenderId: "686053643622",
+    appId: "1:686053643622:web:0932581db22bfdd39064a7",
+    measurementId: "G-V3K8TBP2KL"
   };
 
+  // 2. Init Firebase + EmailJS
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+  emailjs.init("ufiaJCRjyPqt9RGOY"); // ✅ Your public EmailJS key
 
-  document.getElementById("queryForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+  // 3. Handle all forms with class `.form_submission`
+  document.querySelectorAll(".form_submission").forEach((form) => {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const form = this;
-    const loader = form.querySelector(".loader");
-    const success = form.querySelector(".success");
-    const error = form.querySelector(".error");
+      const loader = form.querySelector(".loader");
+      const success = form.querySelector(".success");
+      const error = form.querySelector(".error");
 
-    loader.style.display = "block";
-    success.style.display = "none";
-    error.style.display = "none";
+      if (loader) loader.style.display = "block";
+      if (success) success.style.display = "none";
+      if (error) error.style.display = "none";
 
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const service = form.services.value;
-    const ip = form.ipaddress.value;
+      // 4. Form fields
+      const name = form.name?.value.trim() || "";
+      const email = form.email?.value.trim() || "";
+      const phone = form.phone?.value.trim() || "";
+      const service = form.services?.value || "";
+      const budget = form.Budget?.value || "";
+      const message = form.message?.value || form.msg?.value || "";
+      const ip = form.ipaddress?.value || "";
+      const url = form.url?.value || "";
+      const domain = form.domain?.value || "";
+      const subject = form.subject?.value || "";
 
-    try {
-      await db.collection("contactQueries").add({
+      // 5. Prepare data
+      const formData = {
         name,
         email,
         phone,
         service,
+        budget,
+        message,
         ip,
+        url,
+        domain,
+        subject,
         submittedAt: new Date()
-      });
+      };
 
-      form.reset();
-      loader.style.display = "none";
-      success.textContent = "Your query has been submitted!";
-      success.style.display = "block";
-    } catch (err) {
-      console.error(err);
-      loader.style.display = "none";
-      error.textContent = "Failed to submit. Please try again.";
-      error.style.display = "block";
-    }
+      try {
+        // 6. Save to Firebase
+        await db.collection("contactQueries").add(formData);
+
+        // 7. Send via EmailJS
+        await emailjs.send("service_1", "template_no1rbhg", formData); // Replace with actual service/template IDs
+
+        form.reset();
+        if (loader) loader.style.display = "none";
+        if (success) {
+          success.textContent = "Your query has been submitted!";
+          success.style.display = "block";
+        }
+      } catch (err) {
+        console.error("Submission failed:", err);
+        if (loader) loader.style.display = "none";
+        if (error) {
+          error.textContent = "Failed to submit. Please try again.";
+          error.style.display = "block";
+        }
+      }
+    });
   });
 </script>
 
