@@ -7917,7 +7917,7 @@ a.call-action:hover {
         padding-top: 20px;
         z-index: 999;
         border-radius: 10px;
-        background-image: url(../images/menu-bg.jpg);
+        background-color: ;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -10637,7 +10637,7 @@ a.call-action:hover {
         padding-top: 20px;
         z-index: 999;
         border-radius: 10px;
-        background-image: url(../images/menu-bg.jpg);
+        background-color: #ad4b6c ;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
