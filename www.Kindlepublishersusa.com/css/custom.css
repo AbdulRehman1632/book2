@@ -2791,6 +2791,7 @@ footer .footer-top {
 }
 .disclaimer-sec {
     margin: 20px 0 10px;
+    /* margin-left: -200px; */
 }
 .disclaimer-sec p {
     font-family: montserrat, sans-serif;
@@ -7888,6 +7889,7 @@ a.call-action:hover {
     }
     .payment-cards img {
         width: 85% !important;
+        
     }
     .row.inner-footer {
         padding: 32px 0px !important;
@@ -7917,7 +7919,7 @@ a.call-action:hover {
         padding-top: 20px;
         z-index: 999;
         border-radius: 10px;
-        background-color: ;
+        background-color: #ad4b6c !important;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -10578,7 +10580,14 @@ a.call-action:hover {
     .copyright h1 {
         font-size: 13px !important;
         text-align: center !important;
+        /* margin-left: -50px !important; */
+        /* width: 100%; */
     }
+
+    /* .disclaimer p{
+        margin-left: -110px !important;
+
+    } */
     .payment-cards {
         display: none !important;
     }
@@ -10637,7 +10646,7 @@ a.call-action:hover {
         padding-top: 20px;
         z-index: 999;
         border-radius: 10px;
-        background-color: #ad4b6c ;
+        background-color: #ad4b6c !important;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -13967,6 +13976,7 @@ section.copy-right {
 .row.copyright-web {
     padding: 22px 0px;
     display: flex;
+    /* margin-left: 120px; */
     align-items: center;
     justify-content: center;
     align-content: center;
@@ -15327,3 +15337,5 @@ section.bottom-testimonial {
 .newsletter{
     display: none;
 }
+
+
