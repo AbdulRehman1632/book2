@@ -11915,13 +11915,13 @@ section.our-services {
     transition-duration: 2s;
 }
 .service-inner-box:hover {
-    background-image: url(../images/service-hover-bg.png);
+    background-image: url(https://res.cloudinary.com/dpm8fa6gn/image/upload/v1751022597/service-hover-bg_svjf2w.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .service-inner-box1:hover {
-    background-image: url(../images/service-hover-bg.png);
+    background-image: url(https://res.cloudinary.com/dpm8fa6gn/image/upload/v1751022597/service-hover-bg_svjf2w.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
