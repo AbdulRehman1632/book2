@@ -11932,9 +11932,9 @@ section.our-services {
 .service-inner-box:hover .service-num h1 {
     color: transparent;
 }
-.service-inner-box1:hover ::-webkit-scrollbar-thumb {
+/* .service-inner-box1:hover ::-webkit-scrollbar-thumb {
     background: #fff;
-}
+} */
 .service-inner-box1:hover .service-num h1 {
     color: transparent;
 }
