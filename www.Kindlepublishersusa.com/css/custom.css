@@ -14535,7 +14535,8 @@ section.contact-inner-sec {
 }
 .phone-quick-box {
     display: flex;
-    background-image: url(../images/phone-bg-img.png) !important;
+    /* background-image: url(../images/phone-bg-img.png) !important; */
+    background-color: #ad4b6c !important;
     align-items: center;
     padding: 24px 20px;
     border-radius: 20px;
@@ -14556,7 +14557,8 @@ section.contact-inner-sec {
 }
 .email-quick-box {
     display: flex;
-    background-image: url(../images/email-bg-img.png) !important;
+    /* background-image: url(../images/email-bg-img.png) !important; */
+    background-color: #ad4b6c !important;
     align-items: center;
     padding: 24px 20px;
     border-radius: 20px;
@@ -14577,7 +14579,8 @@ section.contact-inner-sec {
 }
 .map-quick-box {
     display: flex;
-    background-image: url(../images/map-bg-img.png) !important;
+    /* background-image: url(../images/map-bg-img.png) !important; */
+    background-color: #ad4b6c !important;
     align-items: center;
     padding: 24px 20px;
     border-radius: 20px;
