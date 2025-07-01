@@ -5677,6 +5677,7 @@ a.call-action:hover {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 485px;
         background-position: center;
@@ -7552,6 +7553,7 @@ a.call-action:hover {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 435px !important;
         background-position: center;
@@ -8964,6 +8966,7 @@ a.call-action:hover {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 435px !important;
         background-position: center;
@@ -10415,6 +10418,7 @@ a.call-action:hover {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: auto !important;
         background-position: center;
@@ -13528,6 +13532,7 @@ section.tabs-sec {
 }
 .row.tab-box-bg {
     background-image: url(../images/tab-sec-bg.png);
+    background-color: #ad4b6c !important;
     width: 100%;
     height: 485px;
     background-position: center;
@@ -14871,6 +14876,7 @@ section.map-sec {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 485px;
         background-position: center;
@@ -14981,6 +14987,7 @@ section.map-sec {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 485px;
         background-position: center;
@@ -15039,6 +15046,7 @@ section.map-sec {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 485px;
         background-position: center;
@@ -15172,6 +15180,7 @@ section.map-sec {
     }
     .row.tab-box-bg {
         background-image: url(../images/tab-sec-bg.png);
+        background-color: #ad4b6c !important;
         width: 100%;
         height: 485px;
         background-position: center;
